@@ -7,10 +7,10 @@ body {
   margin: 0;
   padding: 0;
 }
-h1 {
+.authH1 {
   font-size: xx-large !important;
 }
-input {
+.authInput {
   font-family: "Montserrat", sans-serif !important;
   font-size: initial !important;
   line-height: initial !important;
@@ -51,7 +51,7 @@ input {
   border-radius: 20px !important;
   box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff !important;
 }
-button {
+.authButton {
   border-radius: 20px !important;
   border: none !important;
   outline: none !important;
@@ -146,13 +146,13 @@ button {
   color: #000 !important;
 }
 
-p {
+.authP {
   font-size: 16px !important;
   font-weight: bold !important;
   letter-spacing: 0.5px !important;
   margin: 20px 0 30px !important;
 }
-span {
+.authspan {
   font-size: 12px !important;
   color: #000 !important;
   letter-spacing: 0.5px !important;

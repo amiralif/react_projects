@@ -187,7 +187,7 @@ function Authenticate() {
       <div className={`${classes.container} ${classes.right_panel_active}`}>
         <div className={`${classes.sign_up_container}`}>
           <form className={`${classes.form}`} onSubmit={registerForm}>
-            <h1>Create Account</h1>
+            <h1 className={`${classes.authH1}`}>Create Account</h1>
             <div className={`${classes.social_links}`}>
               <div className={`${classes.social_Links_div}`}>
                 <a
@@ -220,8 +220,9 @@ function Authenticate() {
                 </a>
               </div>
             </div>
-            <span> use your email for registration</span>
+            <span className={`${classes.authSpan}`}> use your email for registration</span>
             <input
+             className={`${classes.authInput}`}
               type="email"
               required
               placeholder="Email"
@@ -233,12 +234,12 @@ function Authenticate() {
             <input
               type="password"
               placeholder="Password"
-              value={password}
+              value={password}className={`${classes.authInput}`}
               onChange={(event) => {
                 setPassword(event.target.value);
               }}
             />
-            <input
+            <input className={`${classes.authInput}`}
               type="password"
               placeholder="Confirm Password"
               value={passwordConf}
@@ -246,12 +247,12 @@ function Authenticate() {
                 setPasswordConf(event.target.value);
               }}
             />
-            <button className={`${classes.form_btn}`}>sign Up</button>
+            <button className={`${classes.form_btn} ${classes.authButton}`}>sign Up</button>
           </form>
         </div>
         <div className={`${classes.sign_in_container}`}>
           <form className={`${classes.form}`} onSubmit={loginForm}>
-            <h1>Sign In</h1>
+            <h1 className={`${classes.authH1}`}>Sign In</h1>
             <div className={`${classes.social_links}`}>
               <div className={`${classes.social_Links_div}`}>
                 <a
@@ -284,10 +285,10 @@ function Authenticate() {
                 </a>
               </div>
             </div>
-            <span> use your account</span>
+            <span className={`${classes.authSpan}`}> use your account</span>
             <input
               type="email"
-              required
+              required className={`${classes.authInput}`}
               placeholder="Email"
               value={email}
               onChange={(event) => {
@@ -295,36 +296,36 @@ function Authenticate() {
               }}
             />
             <input
-              type="password"
+              type="password" className={`${classes.authInput}`}
               placeholder="Password"
               value={password}
               onChange={(event) => {
                 setPassword(event.target.value);
               }}
             />
-            <button className={`${classes.form_btn}`}>Sign In</button>
+            <button className={`${classes.form_btn} ${classes.authButton}`}>Sign In</button>
           </form>
         </div>
         <div className={`${classes.overlay_container}`}>
           <div className={`${classes.overlay_left}`}>
-            <h1>Welcome Back</h1>
-            <p>
+            <h1 className={`${classes.authH1}`}>Welcome Back</h1>
+            <p className={`${classes.authP}`}>
               To keep connected with us please login with your personal info
             </p>
             <button
               id="signIn"
-              className={`${classes.overlay_btn}`}
+              className={`${classes.overlay_btn} ${classes.authButton}`}
               onClick={buttonHandle}
             >
               sign In
             </button>
           </div>
           <div className={`${classes.overlay_right}`}>
-            <h1>Hello,Welcome to our WebSite </h1>
-            <p>Enter Your personal details and start suggesting movies</p>
+            <h1 className={`${classes.authH1}`}>Hello,Welcome to our WebSite </h1>
+            <p className={`${classes.authP}`}>Enter Your personal details and start suggesting movies</p>
             <button
               id="signUn"
-              className={`${classes.overlay_btn}`}
+              className={`${classes.overlay_btn} ${classes.authButton}`}
               onClick={buttonHandle}
             >
               sign In
