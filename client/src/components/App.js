@@ -7,11 +7,11 @@ import { useEffect } from "react";
 import { checkAuthenticateStatus } from "../store";
 
 import Authenticate from "./auth/Authenticate";
-import MovieList from "./movie/MovieList";
-import Movie from "./movie/Movie";
-import CreateMovie from "./movie/CreateMovie";
-import UpdateMovie from "./movie/UpdateMovie";
-import DeleteMovie from "./movie/DeleteMovie";
+import MovieListComponent from "./movie/MovieListComponent";
+import MovieComponent from "./movie/MovieComponent";
+import CreateMovieComponent from "./movie/CreateMovieComponent";
+import UpdateMovieComponent from "./movie/UpdateMovieComponent";
+import DeleteMovieComponent from "./movie/DeleteMovieComponent";
 import NotFound from "./NotFound";
 
 function App() {
@@ -28,16 +28,16 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Authenticate />}></Route>
-            <Route path="/movies" element={<MovieList />}></Route>
-            <Route path="/movies/:movieId" element={<Movie />}></Route>
-            <Route path="/movies/create" element={<CreateMovie />}></Route>
+            <Route path="/movies" element={<MovieListComponent />}></Route>
+            <Route path="/movies/:movieId" element={<MovieComponent />}></Route>
+            <Route path="/movies/create" element={<CreateMovieComponent />}></Route>
             <Route
               path="/movies/update/:movieId"
-              element={<UpdateMovie />}
+              element={<UpdateMovieComponent />}
             ></Route>
             <Route
               path="/movies/delete/:movieId"
-              element={<DeleteMovie />}
+              element={<DeleteMovieComponent />}
             ></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>

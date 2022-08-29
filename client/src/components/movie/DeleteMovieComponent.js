@@ -1,9 +1,9 @@
 import React from 'react'
 
-function DeleteMovie() {
+function DeleteMovieComponent() {
   return (
     <div>DeleteMovie</div>
   )
 }
 
-export default DeleteMovie
+export default DeleteMovieComponent

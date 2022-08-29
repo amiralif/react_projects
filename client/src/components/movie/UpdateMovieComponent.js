@@ -1,9 +1,9 @@
 import React from 'react'
 
-function UpdateMovie() {
+function UpdateMovieComponent() {
   return (
     <div>UpdateMovie</div>
   )
 }
 
-export default UpdateMovie
+export default UpdateMovieComponent
