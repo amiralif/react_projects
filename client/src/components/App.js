@@ -13,6 +13,7 @@ import CreateMovieComponent from "./movie/CreateMovieComponent";
 import UpdateMovieComponent from "./movie/UpdateMovieComponent";
 import DeleteMovieComponent from "./movie/DeleteMovieComponent";
 import NotFound from "./NotFound";
+import Navbar from "./Navbar";
 
 function App() {
   const { data: loginData } = useSelector((store) => store.login);
@@ -26,11 +27,15 @@ function App() {
     if (loginData) {
       return (
         <BrowserRouter>
+          <Navbar />
           <Routes>
             <Route path="/" element={<Authenticate />}></Route>
             <Route path="/movies" element={<MovieListComponent />}></Route>
             <Route path="/movie/:movieId" element={<MovieComponent />}></Route>
-            <Route path="/movie/create" element={<CreateMovieComponent />}></Route>
+            <Route
+              path="/movie/create"
+              element={<CreateMovieComponent />}
+            ></Route>
             <Route
               path="/movie/update/:movieId"
               element={<UpdateMovieComponent />}
@@ -57,7 +62,7 @@ function App() {
   };
 
   return (
-    <div >
+    <div>
       {contentToShow()}
       <ToastContainer
         position="top-right"
