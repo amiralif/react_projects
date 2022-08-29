@@ -28,3 +28,22 @@ export const movieDetails = (movieId) => {
     dispatch({ type: VIEW_MOVIE, payload: response.data });
   };
 };
+
+export const createMovie = (name, description, onSuccess) => {
+  const date = new Date();
+  return async (dispatch, getState) => {
+    const state = getState();
+    const response = await axios.post(
+      "http://127.0.0.1:9000/movies",
+      {
+        name: name,
+        description: description,
+        creator: state.login.data.email,
+        createDate: date.getMonth + " ," + date.getDay,
+      },
+      { headers: { authorization: `Bearer ${state.login.data.token}` } }
+    );
+    dispatch({ type: CREATE_MOVIE, payload: response.data });
+    onSuccess();
+  };
+};

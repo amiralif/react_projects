@@ -14,6 +14,8 @@ export const movieReducer = (state = {}, action) => {
       return { ...state.movie, ..._.mapKeys(action.payload, "id") };
     case VIEW_MOVIE:
       return { ...state.movie, [action.payload.id]: action.payload };
+    case CREATE_MOVIE:
+      return { ...state.movies, [action.payload.id]: action.payload };
     default:
       return state;
   }
