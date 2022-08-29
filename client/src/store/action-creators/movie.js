@@ -64,14 +64,15 @@ export const createMovie = (name, description, onSuccess) => {
     onSuccess();
   };
 };
-export const updateMovie = (name, description, id) => {
+export const updateMovie = (id, name, description, onSuccess) => {
   return async (dispatch, getState) => {
     const state = getState();
-    const response = await axios.post(
+    const response = await axios.patch(
       `http://127.0.0.1:9000/movies/${id}`,
       { name, description },
       { headers: { authorization: `Bearer ${state.login.data.token}` } }
     );
     dispatch({ type: UPDATE_MOVIE, payload: response.data });
+    onSuccess();
   };
 };
