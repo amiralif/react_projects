@@ -17,3 +17,14 @@ export const movieList = () => {
     dispatch({ type: MOVIE_LIST, payload: result.data });
   };
 };
+
+export const movieDetails = (movieId) => {
+  return async (dispatch, getState) => {
+    const state = getState();
+    const response = await axios.get(
+      `http://127.0.0.1:9000/movies/${movieId}`,
+      { headers: { authorization: `Bearer ${state.login.data.token}` } }
+    );
+    dispatch({ type: VIEW_MOVIE, payload: response.data });
+  };
+};
