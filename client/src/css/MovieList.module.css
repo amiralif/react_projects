@@ -19,7 +19,6 @@
 }
 .movie_widgets {
   position: relative;
-  margin-bottom: 10px;
 }
 
 .movie_widgets .movies_row {
@@ -28,16 +27,11 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 10px 0;
+  border-radius: 10px;
+  transition: all 0.5s;
 }
 
-.p_2 {
-  padding: 0.5rem !important;
-}
 
-.movies_text {
-  padding-left: 15px;
-}
 .w_100 {
   width: 100% !important;
 }
@@ -55,7 +49,7 @@
   position: relative;
 }
 .movie_widgets .movies_row:hover {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.16);
 }
 .btn_parent {
   position: absolute;

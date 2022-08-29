@@ -49,8 +49,8 @@ const MovieForm = (props) => {
                     />
                   </div>
 
-                  <div className="form-control mb-3">
-                    <button type="submit" className="btn btn-success btn-lg">
+                  <div className="form-control mb-3 ">
+                    <button type="submit" className="btn btn-success btn-lg w-100">
                       {isEdite ?" Update" : "Create"}
                     </button>
                   </div>

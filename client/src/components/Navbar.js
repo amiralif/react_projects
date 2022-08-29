@@ -23,7 +23,7 @@ const Navbar = () => {
               <Link className={`${classes.navText} navbar-brand`} to="/movies">
                 Movies
               </Link>
-              <Link className={`${classes.navText} nav-link`} to="/movies/create">
+              <Link className={`${classes.navText} nav-link`} to="/movie/create">
                 Create
               </Link>
               <div className="d-flex">
