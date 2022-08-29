@@ -64,6 +64,7 @@ export const createMovie = (name, description, onSuccess) => {
     onSuccess();
   };
 };
+
 export const updateMovie = (id, name, description, onSuccess) => {
   return async (dispatch, getState) => {
     const state = getState();
@@ -74,5 +75,16 @@ export const updateMovie = (id, name, description, onSuccess) => {
     );
     dispatch({ type: UPDATE_MOVIE, payload: response.data });
     onSuccess();
+  };
+};
+
+export const deleteMovie = (id, navigate) => {
+  return async (dispatch, getState) => {
+    const state = getState();
+    await axios.delete(`http://127.0.0.1:9000/movies/${id}`, {
+      headers: { authorization: `Bearer ${state.login.data.token}` },
+    });
+    dispatch({ type: DELETE_MOVIE, payload: id });
+    navigate();
   };
 };

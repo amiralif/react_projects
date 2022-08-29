@@ -18,6 +18,8 @@ export const movieReducer = (state = {}, action) => {
       return { ...state.movies, [action.payload.id]: action.payload };
     case UPDATE_MOVIE:
       return { ...state.movie, [action.payload.id]: action.payload };
+    case DELETE_MOVIE:
+      return _.omit(state.movies, action.payload);
     default:
       return state;
   }
