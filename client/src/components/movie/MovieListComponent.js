@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { movieList } from "../../store";
+import classes from "../../css/MovieList.module.css";
 
 const MovieListComponent = () => {
   const dispatch = useDispatch();
@@ -18,23 +19,25 @@ const MovieListComponent = () => {
   const buttonHandler = (movie) => {
     if (movie.creator === email) {
       return (
-        <div className="float-end">
+        <div className={`float-end ${classes.btn_parent}`}>
+            
+
           <Link
-            className="btn btn-info"
+            className={`${classes.btn_sm} btn btn-info`}
             to={`/movie/Update/${movie.id}`}
             style={{ marginRight: "2px" }}
           >
             Update
           </Link>
           <Link
-            className="btn btn-danger"
+            className={`${classes.btn_sm} btn btn-danger`}
             to={`/movie/delete/${movie.id}`}
             style={{ marginRight: "2px" }}
           >
             Delete
           </Link>
           <Link
-            className="btn btn-primary"
+           className={`${classes.btn_sm} btn btn-primary`}
             to={`/movie/${movie.id}`}
             style={{ marginRight: "2px" }}
           >
@@ -43,28 +46,50 @@ const MovieListComponent = () => {
         </div>
       );
     } else {
-      <div className="float-end">
-        <Link
-          className="btn btn-primary"
-          to={`/movie/${movie.id}`}
-          style={{ marginRight: "2px" }}
-        >
-          View
-        </Link>
-      </div>;
+      return (
+        <div className={`float-end ${classes.btn_parent}`}>
+         <Link
+           className={`${classes.btn_sm} btn btn-primary`}
+            to={`/movie/${movie.id}`}
+            style={{ marginRight: "2px" }}
+          >
+            View
+          </Link>
+        </div>
+      );
     }
   };
-  const moviesToShow = movies.map((movie) => (
+  const MoviesList = () => {
+    const userName = email.split("@")[0];
+
+    return movies.map((movie) => (
+      <div
+        key={movie.id}
+        className={`d-flex flex-row ${classes.movies_row} m-t-0`}
+      >                
+        <div className={`${classes.p_2}`}></div>
+        <div className={`${classes.movies_text} ${classes.w_100} `}>
+          <h6 className="font-medium">  {movie.name} </h6>
+          <span className={`${classes.m_b_15} d-block`}>Creator: {userName}</span>
+            <div className={`${classes.movies_footer}`}>
+                <span className="text-muted float-right">April 14.2019</span>
+                {buttonHandler(movie)}
+            </div>
+        </div>
+      </div>
+    ));
+  };
+  return (
     <div
-      key={movie.id}
-      className="mt-3 p-3"
-      style={{ backgroundColor: "#F2F2F2" }}
+      className={`row d-flex justify-content-center`}
     >
-      {movie.name}
-      {buttonHandler(movie)}
+      <div className="col-lg-6">
+        <div className={`card ${classes.card}`}>
+          <div className={`${classes.movie_widgets}`}>{MoviesList()}</div>
+        </div>
+      </div>
     </div>
-  ));
-  return <div>{moviesToShow}</div>;
+  );
 };
 
 export default MovieListComponent;
