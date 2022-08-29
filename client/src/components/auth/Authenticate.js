@@ -157,13 +157,10 @@ function Authenticate() {
         pauseOnHover: true,
         draggable: true,
         closeButton: true,
-        delay: 1000,
         progress: undefined,
         isLoading: false,
       });
-      setTimeout(() => {
-        navigate("/movies");
-      }, 2000);
+      navigate("/movies");
     }
     if (loginError) {
       toast.update(toastIdLogin.current, {
@@ -220,9 +217,12 @@ function Authenticate() {
                 </a>
               </div>
             </div>
-            <span className={`${classes.authSpan}`}> use your email for registration</span>
+            <span className={`${classes.authSpan}`}>
+              {" "}
+              use your email for registration
+            </span>
             <input
-             className={`${classes.authInput}`}
+              className={`${classes.authInput}`}
               type="email"
               required
               placeholder="Email"
@@ -234,12 +234,14 @@ function Authenticate() {
             <input
               type="password"
               placeholder="Password"
-              value={password}className={`${classes.authInput}`}
+              value={password}
+              className={`${classes.authInput}`}
               onChange={(event) => {
                 setPassword(event.target.value);
               }}
             />
-            <input className={`${classes.authInput}`}
+            <input
+              className={`${classes.authInput}`}
               type="password"
               placeholder="Confirm Password"
               value={passwordConf}
@@ -247,7 +249,9 @@ function Authenticate() {
                 setPasswordConf(event.target.value);
               }}
             />
-            <button className={`${classes.form_btn} ${classes.authButton}`}>sign Up</button>
+            <button className={`${classes.form_btn} ${classes.authButton}`}>
+              sign Up
+            </button>
           </form>
         </div>
         <div className={`${classes.sign_in_container}`}>
@@ -288,7 +292,8 @@ function Authenticate() {
             <span className={`${classes.authSpan}`}> use your account</span>
             <input
               type="email"
-              required className={`${classes.authInput}`}
+              required
+              className={`${classes.authInput}`}
               placeholder="Email"
               value={email}
               onChange={(event) => {
@@ -296,14 +301,17 @@ function Authenticate() {
               }}
             />
             <input
-              type="password" className={`${classes.authInput}`}
+              type="password"
+              className={`${classes.authInput}`}
               placeholder="Password"
               value={password}
               onChange={(event) => {
                 setPassword(event.target.value);
               }}
             />
-            <button className={`${classes.form_btn} ${classes.authButton}`}>Sign In</button>
+            <button className={`${classes.form_btn} ${classes.authButton}`}>
+              Sign In
+            </button>
           </form>
         </div>
         <div className={`${classes.overlay_container}`}>
@@ -321,8 +329,12 @@ function Authenticate() {
             </button>
           </div>
           <div className={`${classes.overlay_right}`}>
-            <h1 className={`${classes.authH1}`}>Hello,Welcome to our WebSite </h1>
-            <p className={`${classes.authP}`}>Enter Your personal details and start suggesting movies</p>
+            <h1 className={`${classes.authH1}`}>
+              Hello,Welcome to our WebSite{" "}
+            </h1>
+            <p className={`${classes.authP}`}>
+              Enter Your personal details and start suggesting movies
+            </p>
             <button
               id="signUn"
               className={`${classes.overlay_btn} ${classes.authButton}`}
