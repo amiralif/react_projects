@@ -11,7 +11,7 @@ import {
 export const movieList = () => {
   return async (dispatch, getState) => {
     const state = getState();
-    const result = await axios.get("http://127.0.0.1:8000/movies", {
+    const result = await axios.get("http://127.0.0.1:9000/movies", {
       headers: { authorization: `Bearer ${state.login.data.token}` },
     });
     dispatch({ type: MOVIE_LIST, payload: result.data });

@@ -16,7 +16,7 @@ export const register = (email, password) => {
     dispatch({ type: REGISTER_IN_PROGRESS });
 
     try {
-      const result = await axios.post("http://127.0.0.1:8000/auth/register", {
+      const result = await axios.post("http://127.0.0.1:9000/auth/register", {
         email,
         password,
       });

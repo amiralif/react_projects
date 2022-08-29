@@ -15,7 +15,7 @@ export const login = (email, password) => {
     dispatch({ type: LOGIN_IN_PROGRESS });
 
     try {
-      const result = await axios.post("http://127.0.0.1:8000/auth/login", {
+      const result = await axios.post("http://127.0.0.1:9000/auth/login", {
         email,
         password,
       });
