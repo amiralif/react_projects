@@ -5,7 +5,6 @@ const MovieForm = (props) => {
   const [movieName, setMovieName] = useState(props.name);
   const [movieDescription, setDescription] = useState(props.description);
 
-  const isEdite = movieName ? true : false;
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -51,7 +50,7 @@ const MovieForm = (props) => {
 
                   <div className="form-control mb-3 ">
                     <button type="submit" className="btn btn-success btn-lg w-100">
-                      {isEdite ?" Update" : "Create"}
+                      {props.name ?" Update" : "Create"}
                     </button>
                   </div>
                 </form>

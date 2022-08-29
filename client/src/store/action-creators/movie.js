@@ -30,7 +30,24 @@ export const movieDetails = (movieId) => {
 };
 
 export const createMovie = (name, description, onSuccess) => {
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
   const date = new Date();
+
+  const month = months[date.getMonth()];
+
   return async (dispatch, getState) => {
     const state = getState();
     const response = await axios.post(
@@ -39,7 +56,7 @@ export const createMovie = (name, description, onSuccess) => {
         name: name,
         description: description,
         creator: state.login.data.email,
-        createDate: date.getMonth + " ," + date.getDay,
+        createDate: month + " ," + date.getDay(),
       },
       { headers: { authorization: `Bearer ${state.login.data.token}` } }
     );
