@@ -60,9 +60,10 @@ const MovieListComponent = () => {
     }
   };
   const MoviesList = () => {
-    const userName = email.split("@")[0];
+    
 
     return movies.map((movie) => (
+      
       <div
         key={movie.id}
         className={`d-flex flex-row ${classes.movies_row} m-t-0`}
@@ -70,7 +71,7 @@ const MovieListComponent = () => {
         <div className={`${classes.p_2}`}></div>
         <div className={`${classes.movies_text} ${classes.w_100} `}>
           <h6 className="font-medium">  {movie.name} </h6>
-          <span className={`${classes.m_b_15} d-block`}>Creator: {userName}</span>
+          <span className={`${classes.m_b_15} d-block`}>Creator: {movie.creator.split("@")[0]}</span>
             <div className={`${classes.movies_footer}`}>
                 <span className="text-muted float-right">April 14.2019</span>
                 {buttonHandler(movie)}
