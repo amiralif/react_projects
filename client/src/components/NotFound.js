@@ -14,14 +14,15 @@ function NotFound() {
       <p className={`${classes.code}`}>
         <span className={`${classes.codeSpan}`}>if</span>&#40;
         <b>you_spelt_it_wrong</b>&#41;&nbsp;&#123;
-        <span>try_again()</span>;&#125;
+        <span> try_again()</span>; &#125;
       </p>
       <p className={`${classes.code}`}>
         <span className={`${classes.codeSpan}`}>
           else if &#40;<b>we_screwed_up</b>&#41;
-        </span>{" "}
-        &nbsp;&#123;<em>alert</em>&#40;<i>"we're really sorry about that."</i>
-        &#41;; <span>window</span>.<em>location</em> = home;&#125;
+        </span>
+        &nbsp;&#123;<em> alert </em>&#40;
+        <i> "we're really sorry about that." </i>
+        &#41;; <span>window</span>.<em>location</em> = home; &#125;
       </p>
     </div>
   );
