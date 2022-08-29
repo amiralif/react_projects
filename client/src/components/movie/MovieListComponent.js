@@ -81,7 +81,7 @@ const MovieListComponent = () => {
   };
   return (
     <div
-      className={`row d-flex justify-content-center`}
+      className={`row d-flex justify-content-center container mt-3`}
     >
       <div className="col-lg-6">
         <div className={`card ${classes.card}`}>

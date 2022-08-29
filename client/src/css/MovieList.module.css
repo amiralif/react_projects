@@ -29,7 +29,6 @@
   display: -ms-flexbox;
   display: flex;
   margin: 10px 0;
-  
 }
 
 .p_2 {
@@ -51,18 +50,15 @@
   font-size: 0.76563rem;
   line-height: 1.5;
   border-radius: 10px;
-  
-
-
 }
-.movies_footer{
+.movies_footer {
   position: relative;
 }
 .movie_widgets .movies_row:hover {
   background: rgba(0, 0, 0, 0.05);
 }
-.btn_parent{
+.btn_parent {
   position: absolute;
-    top: -30px;
-    right: 20px;
+  top: -30px;
+  right: 20px;
 }
