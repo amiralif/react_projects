@@ -8,7 +8,7 @@ import {
   VIEW_MOVIE,
 } from "../action-types";
 
-export const movieReducer = (state, action) => {
+export const movieReducer = (state={}, action) => {
   switch (action.type) {
     case MOVIE_LIST:
       return { ...state.movie, ..._.mapKeys(action.payload, "id") };

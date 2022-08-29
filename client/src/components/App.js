@@ -29,14 +29,14 @@ function App() {
           <Routes>
             <Route path="/" element={<Authenticate />}></Route>
             <Route path="/movies" element={<MovieListComponent />}></Route>
-            <Route path="/movies/:movieId" element={<MovieComponent />}></Route>
-            <Route path="/movies/create" element={<CreateMovieComponent />}></Route>
+            <Route path="/movie/:movieId" element={<MovieComponent />}></Route>
+            <Route path="/movie/create" element={<CreateMovieComponent />}></Route>
             <Route
-              path="/movies/update/:movieId"
+              path="/movie/update/:movieId"
               element={<UpdateMovieComponent />}
             ></Route>
             <Route
-              path="/movies/delete/:movieId"
+              path="/movie/delete/:movieId"
               element={<DeleteMovieComponent />}
             ></Route>
             <Route path="*" element={<NotFound />}></Route>
