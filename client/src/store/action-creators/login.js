@@ -33,12 +33,17 @@ export const login = (email, password) => {
           email: decodedToken.email,
           iat: decodedToken.iat,
           exp: decodedToken.exp,
+      
         },
       });
       dispatch(automaticLogout(decodedToken.exp));
     } catch (e) {
       console.log("E: ", e);
-      dispatch({ type: LOGIN_FAILED, payload: e.response.data.message });
+      if (e.message === "Network Error") {
+        dispatch({ type: LOGIN_FAILED, payload: "Network Lost!!" });
+      } else {
+        dispatch({ type: LOGIN_FAILED, payload: e.response.data.message });
+      }
     }
   };
 };
@@ -86,7 +91,10 @@ export const checkAuthenticateStatus = () => {
         const exp = parseInt(localStorage.getItem("exp"));
         const iat = parseInt(localStorage.getItem("iat"));
 
-        dispatch({ type: LOGIN_SUCCESS, payload: { token, email, exp, iat } });
+        dispatch({
+          type: LOGIN_SUCCESS,
+          payload: { token, email, exp, iat },
+        });
       }
     }
   };

@@ -12,9 +12,10 @@ function Authenticate() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConf, setPasswordConf] = useState("");
+  const [isLoading, setLoading] = useState(false);
 
   const toastIdRegister = React.useRef(null);
-  const toastIdLogin = React.useRef(null);
+
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -132,25 +133,14 @@ function Authenticate() {
         style: { width: "380px", right: "100px" },
       });
     } else {
-      toastIdLogin.current = toast.loading("LOGIN, WAIT...", {
-        position: "top-right",
-        autoClose: false,
-        closeButton: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      setLoading(true);
       dispatch(login(email, password));
     }
   };
 
   useEffect(() => {
     if (loginData) {
-      toast.update(toastIdLogin.current, {
-        render: "REGISTERED SUCCESSFULLY!",
-        type: "success",
+      toast.success("LOGIN SUCCESSFULLY!", {
         autoClose: true,
         hideProgressBar: false,
         closeOnClick: true,
@@ -158,14 +148,13 @@ function Authenticate() {
         draggable: true,
         closeButton: true,
         progress: undefined,
-        isLoading: false,
       });
+      setLoading(false);
       navigate("/movies");
     }
     if (loginError) {
-      toast.update(toastIdLogin.current, {
-        render: loginError,
-        type: "error",
+      setLoading(false);
+      toast.error(loginError, {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -173,8 +162,6 @@ function Authenticate() {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        isLoading: false,
-        delay: 1000,
       });
     }
   }, [loginData, loginError]);
@@ -312,10 +299,11 @@ function Authenticate() {
             <button className={`${classes.form_btn} ${classes.authButton}`}>
               Sign In
             </button>
+            {isLoading ? <Loading/> : null }
           </form>
         </div>
         <div className={`${classes.overlay_container}`}>
-          <div className={`${classes.overlay_left}`}>
+          <div className={`${classes.overlay_right}`}>
             <h1 className={`${classes.authH1}`}>Welcome Back</h1>
             <p className={`${classes.authP}`}>
               To keep connected with us please login with your personal info
@@ -328,7 +316,7 @@ function Authenticate() {
               sign In
             </button>
           </div>
-          <div className={`${classes.overlay_right}`}>
+          <div className={`${classes.overlay_left}`}>
             <h1 className={`${classes.authH1}`}>
               Hello,Welcome to our WebSite{" "}
             </h1>
