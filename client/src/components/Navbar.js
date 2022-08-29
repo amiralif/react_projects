@@ -20,7 +20,7 @@ const Navbar = () => {
             <div
               className={`d-flex justify-content-between ${classes.navRow} m-t-0`}
             >
-              <Link className={`${classes.navText} navbar-brand`} to="/">
+              <Link className={`${classes.navText} navbar-brand`} to="/movies">
                 Movies
               </Link>
               <Link className={`${classes.navText} nav-link`} to="/movies/create">
