@@ -57,7 +57,7 @@ function App() {
   };
 
   return (
-    <div className="container mt-3">
+    <div >
       {contentToShow()}
       <ToastContainer
         position="top-right"
