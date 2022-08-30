@@ -29,15 +29,26 @@ const UpdateMovieComponent = () => {
     });
     navigate("/movies");
   };
-  
-  const formSubmit = (name, descriptions) => {
-    dispatch(updateMovie(movieId, name, descriptions, onSuccess));
+
+  const formSubmit = (name, descriptions, movieGenre, releaseDate) => {
+    dispatch(
+      updateMovie(
+        movieId,
+        name,
+        descriptions,
+        movieGenre,
+        releaseDate,
+        onSuccess
+      )
+    );
   };
 
   return (
     <MovieFrom
       name={editMovie && editMovie.name}
       description={editMovie && editMovie.description}
+      genre={editMovie && editMovie.genre}
+      releaseDate={editMovie && editMovie.releaseDate}
       onFormSubmit={formSubmit}
     />
   );

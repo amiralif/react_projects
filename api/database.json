@@ -19,16 +19,77 @@
       "id": 4
     },
     {
-      "name": "Dororo",
+      "name": "Dororo22",
       "description": "A very sad animation",
       "creator": "bruno@email.com",
-      "id": 6
+      "id": 6,
+      "movieGenre": "Documentary",
+      "releaseDate": [
+        "2022-01-08T17:19:00.000Z"
+      ]
     },
     {
       "name": "Top Gun",
       "description": "A new entry in the series",
       "creator": "bruno@email.com",
       "id": 7
+    },
+    {
+      "name": "tst",
+      "description": "ttssss",
+      "creator": "bruno@email.com",
+      "createDate": "Aug ,2",
+      "id": 8
+    },
+    {
+      "name": "ad",
+      "description": "qweasd",
+      "creator": "bruno@email.com",
+      "createDate": "Aug ,2",
+      "id": 9
+    },
+    {
+      "name": "ad",
+      "description": "qweasd",
+      "creator": "bruno@email.com",
+      "createDate": "Aug ,2",
+      "id": 10
+    },
+    {
+      "name": "ad",
+      "description": "qweasd",
+      "creator": "bruno@email.com",
+      "genre": [
+        "2000-08-23T16:07:00.000Z"
+      ],
+      "createDate": "Aug ,2",
+      "id": 11
+    },
+    {
+      "name": "123",
+      "description": "asdasdad",
+      "creator": "bruno@email.com",
+      "releaseDate": "2022-08-30T16:11:04.983Z",
+      "createDate": "Aug ,2",
+      "id": 12
+    },
+    {
+      "name": "",
+      "description": "",
+      "creator": "bruno@email.com",
+      "releaseDate": "2022-08-30T16:42:56.471Z",
+      "genre": "Documentary",
+      "createDate": "Aug ,2",
+      "id": 13
+    },
+    {
+      "name": "ada",
+      "description": "adsadsads",
+      "creator": "bruno@email.com",
+      "releaseDate": "2022-08-30T16:47:26.005Z",
+      "genre": "none",
+      "createDate": "Aug ,2",
+      "id": 14
     }
   ]
 }

@@ -29,7 +29,13 @@ export const movieDetails = (movieId) => {
   };
 };
 
-export const createMovie = (name, description, onSuccess) => {
+export const createMovie = (
+  name,
+  description,
+  movieGenre,
+  releaseDate,
+  onSuccess
+) => {
   const months = [
     "Jan",
     "Feb",
@@ -56,6 +62,8 @@ export const createMovie = (name, description, onSuccess) => {
         name: name,
         description: description,
         creator: state.login.data.email,
+        releaseDate: releaseDate,
+        genre: movieGenre,
         createDate: month + " ," + date.getDay(),
       },
       { headers: { authorization: `Bearer ${state.login.data.token}` } }
@@ -65,12 +73,12 @@ export const createMovie = (name, description, onSuccess) => {
   };
 };
 
-export const updateMovie = (id, name, description, onSuccess) => {
+export const updateMovie = (id, name, description,movieGenre,releaseDate, onSuccess) => {
   return async (dispatch, getState) => {
     const state = getState();
     const response = await axios.patch(
       `http://127.0.0.1:9000/movies/${id}`,
-      { name, description },
+      { name, description,movieGenre,releaseDate, },
       { headers: { authorization: `Bearer ${state.login.data.token}` } }
     );
     dispatch({ type: UPDATE_MOVIE, payload: response.data });

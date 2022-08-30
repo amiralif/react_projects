@@ -1,14 +1,36 @@
 import { useState } from "react";
 import classes from "../../css/MovieList.module.css";
+// import DatePicker from "react-date-picker";
+import "flatpickr/dist/themes/material_green.css";
+import Flatpickr from "react-flatpickr";
+import { toast } from "react-toastify";
 
 const MovieForm = (props) => {
   const [movieName, setMovieName] = useState(props.name);
   const [movieDescription, setDescription] = useState(props.description);
+  const [movieGenre, setMovieGenre] = useState(
+    props.genre ? props.genre : "none"
+  );
 
+  const [releaseDate, setReleaseDate] = useState(
+    props.releaseDate ? props.releaseDate : new Date()
+  );
 
   const formSubmit = (e) => {
     e.preventDefault();
-    props.onFormSubmit(movieName, movieDescription);
+    if (movieGenre === "none") {
+      toast.error("Select Movie Genre", {
+        autoClose: true,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        closeButton: true,
+        progress: undefined,
+      });
+    } else {
+      props.onFormSubmit(movieName, movieDescription, movieGenre, releaseDate);
+    }
   };
 
   return (
@@ -22,24 +44,80 @@ const MovieForm = (props) => {
                 <form onSubmit={formSubmit}>
                   <div className="form-control mb-3">
                     <label className="form-label" htmlFor="name">
-                      Movie/Serial Name:
+                      Name:
                     </label>
                     <input
                       type="text"
                       id="name"
+                      required
                       className="form-control form-control-lg"
                       placeholder="Enter Movie/Serial Name"
                       value={movieName}
                       onChange={(e) => setMovieName(e.target.value)}
                     />
                   </div>
-
+                  <div className="form-control mb-3 d-flex justify-content-around">
+                    <div className="radio d-inline">
+                      <label>
+                        <input
+                          type="radio"
+                          value="Action"
+                          name="genre"
+                          onChange={(e) => {
+                            setMovieGenre(e.target.value);
+                          }}
+                        />
+                        Action
+                      </label>
+                    </div>
+                    <div className="radio d-inline">
+                      <label>
+                        <input
+                          type="radio"
+                          value="Drama"
+                          name="genre"
+                          onChange={(e) => {
+                            setMovieGenre(e.target.value);
+                          }}
+                        />
+                        Drama
+                      </label>
+                    </div>
+                    <div className="radio d-inline">
+                      <label>
+                        <input
+                        
+                          type="radio"
+                          value="Documentary"
+                          name="genre"
+                          onChange={(e) => {
+                            setMovieGenre(e.target.value);
+                          }}
+                        />
+                        Documentary
+                      </label>
+                    </div>
+                    <div className="radio d-inline">
+                      <label>
+                        <input
+                          type="radio"
+                          value="Science Fiction"
+                          name="genre"
+                          onChange={(e) => {
+                            setMovieGenre(e.target.value);
+                          }}
+                        />
+                        Science Fiction
+                      </label>
+                    </div>
+                  </div>
                   <div className="form-control mb-3">
                     <label className="form-label" htmlFor="description">
-                      Description Name:
+                      Movie/Serial Description:
                     </label>
                     <textarea
                       id="description"
+                      required
                       className="form-control form-control-lg"
                       rows="10"
                       placeholder="Enter Movie/Serial Description"
@@ -47,10 +125,26 @@ const MovieForm = (props) => {
                       onChange={(e) => setDescription(e.target.value)}
                     />
                   </div>
+                  <div className="form-control mb-3">
+                    <label className="form-label" htmlFor="releaseDate">
+                      Release Date:{" "}
+                    </label>
+                    <Flatpickr
+                      required
+                      id="releaseDate"
+                      className="form-control form-control-lg"
+                      data-enable-time
+                      value={releaseDate}
+                      onChange={setReleaseDate}
+                    />
+                  </div>
 
                   <div className="form-control mb-3 ">
-                    <button type="submit" className="btn btn-success btn-lg w-100">
-                      {props.name ?" Update" : "Create"}
+                    <button
+                      type="submit"
+                      className="btn btn-success btn-lg w-100"
+                    >
+                      {props.name ? " Update" : "Create"}
                     </button>
                   </div>
                 </form>

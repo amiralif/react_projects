@@ -22,8 +22,10 @@ const CreateMovieComponent = () => {
     });
     navigate("/movies");
   };
-  const onSubmit = (name, description) => {
-    dispatch(createMovie(name, description, onSuccess));
+  const onSubmit = (name, description, movieGenre, releaseDate) => {
+    dispatch(
+      createMovie(name, description, movieGenre, releaseDate, onSuccess)
+    );
   };
 
   return <MovieForm name={""} description={""} onFormSubmit={onSubmit} />;
