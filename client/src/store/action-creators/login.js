@@ -33,7 +33,6 @@ export const login = (email, password) => {
           email: decodedToken.email,
           iat: decodedToken.iat,
           exp: decodedToken.exp,
-      
         },
       });
       dispatch(automaticLogout(decodedToken.exp));

@@ -23,7 +23,10 @@ const Navbar = () => {
               <Link className={`${classes.navText} navbar-brand`} to="/movies">
                 Movies
               </Link>
-              <Link className={`${classes.navText} nav-link`} to="/movie/create">
+              <Link
+                className={`${classes.navText} nav-link`}
+                to="/movie/create"
+              >
                 Create
               </Link>
               <div className="d-flex">
@@ -39,4 +42,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar
+export default Navbar;

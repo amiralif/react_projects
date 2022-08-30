@@ -52,11 +52,17 @@ const CreateMovieComponent = () => {
     }
   };
 
-
   const onSubmit = (name, description, movieGenre, releaseDate) => {
     setLoading(true);
     dispatch(
-      createMovie(name, description, movieGenre, releaseDate, onSuccess ,onError)
+      createMovie(
+        name,
+        description,
+        movieGenre,
+        releaseDate,
+        onSuccess,
+        onError
+      )
     );
   };
 

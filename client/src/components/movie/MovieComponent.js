@@ -14,8 +14,11 @@ const MovieComponent = () => {
   }, [dispatch, movieId]);
 
   const movieContainer = () => {
-    const  releaseDate = movie.releaseDate.toString().split("T")[0].replace(/-/gi, "/")
-  
+    const releaseDate = movie.releaseDate
+      .toString()
+      .split("T")[0]
+      .replace(/-/gi, "/");
+
     if (movie) {
       return (
         <div
@@ -35,7 +38,9 @@ const MovieComponent = () => {
             </p>
             <br></br>
             <br></br>
-            <span className={`${classes.m_b_15} `}>Movie Released at: {releaseDate}</span>
+            <span className={`${classes.m_b_15} `}>
+              Movie Released at: {releaseDate}
+            </span>
             <br></br> <br></br>
             <span className={`${classes.m_b_15} `}>
               Movie Genre: <strong>{movie.movieGenre}</strong>

@@ -299,7 +299,7 @@ function Authenticate() {
             <button className={`${classes.form_btn} ${classes.authButton}`}>
               Sign In
             </button>
-            {isLoading ? <Loading/> : null }
+            {isLoading ? <Loading /> : null}
           </form>
         </div>
         <div className={`${classes.overlay_container}`}>

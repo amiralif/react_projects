@@ -20,7 +20,7 @@ export const register = (email, password) => {
         email,
         password,
       });
-    //   const decodedData = jwtDecode(result.data.access_token);
+      //   const decodedData = jwtDecode(result.data.access_token);
 
       dispatch({
         type: REGISTER_SUCCESS,
