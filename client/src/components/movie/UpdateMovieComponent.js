@@ -1,15 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { movieList, updateMovie } from "../../store";
 import MovieFrom from "./MovieForm";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import Loading from "../Loading";
 
 const UpdateMovieComponent = () => {
   const dispatch = useDispatch();
   const { movieId } = useParams();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const editMovie = useSelector((state) => state.movies[movieId]);
 
@@ -18,6 +20,7 @@ const UpdateMovieComponent = () => {
   }, [dispatch, movieId]);
 
   const onSuccess = () => {
+    setLoading(false);
     toast.success("Your Movie Updated!", {
       autoClose: true,
       hideProgressBar: false,
@@ -31,6 +34,7 @@ const UpdateMovieComponent = () => {
   };
 
   const formSubmit = (name, descriptions, movieGenre, releaseDate) => {
+    setLoading(true);
     dispatch(
       updateMovie(
         movieId,
@@ -43,7 +47,9 @@ const UpdateMovieComponent = () => {
     );
   };
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <MovieFrom
       name={editMovie && editMovie.name}
       description={editMovie && editMovie.description}

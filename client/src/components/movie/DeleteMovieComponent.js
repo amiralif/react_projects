@@ -5,11 +5,15 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { deleteMovie, movieList } from "../../store";
+import { toast } from "react-toastify";
+import Loading from "../Loading";
+import Modal from 'react-modal'
 
 const DeleteMovieComponent = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [loading, setLoading] = useState(false);
   const [isModalOpen, setModalOpen] = useState(true);
 
   const { movieId } = useParams();
@@ -19,15 +23,24 @@ const DeleteMovieComponent = () => {
     dispatch(movieList(movieId));
   }, [movieId, dispatch]);
 
-  const deleteBtn = () => {
-    dispatch(
-      deleteMovie(movieId, () => {
-        navigate("/movies");
-      })
-    );
+  const onSuccess = () => {
+    setLoading(false);
+    toast.warning("Movie DELETED!", {
+      autoClose: true,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      closeButton: true,
+      progress: undefined,
+    });
+    navigate("/movies");
   };
 
- 
+  const deleteBtn = () => {
+    setLoading(true);
+    dispatch(deleteMovie(movieId, onSuccess));
+  };
 
   const handleCloseModal = () => {
     setModalOpen(false);
@@ -49,35 +62,39 @@ const DeleteMovieComponent = () => {
   const popupView = () => {
     return (
       <div className="container d-flex justify-content-center align-items-center">
-        <div className="card py-4 px-4">
-          <div className="text-center">
-            <span
-              className="material-symbols-outlined"
-              style={{ color: "darkred" }}
-            >
-              error
-            </span>
-          </div>
-          <div className="text-center mt-3">
-            <span className="info-text">
-              Are you Sure to delete {deletedMovie && deletedMovie.name}
-            </span>
-          </div>
-          <div className="position-relative mt-3 form-input">
-            <div className="d-flex justify-content-between">
-              <button className="btn btn-danger" onClick={deleteBtn}>
-                Yes
-              </button>
-              <button className="btn btn-primary" onClick={handleCloseModal}>
-                No (Cancel){" "}
-              </button>
+        {loading ? (
+          <Loading />
+        ) : (
+          <div className="card py-4 px-4">
+            <div className="text-center">
+              <span
+                className="material-symbols-outlined"
+                style={{ color: "darkred" }}
+              >
+                error
+              </span>
+            </div>
+            <div className="text-center mt-3">
+              <span className="info-text">
+                Are you Sure to delete {deletedMovie && deletedMovie.name}
+              </span>
+            </div>
+            <div className="position-relative mt-3 form-input">
+              <div className="d-flex justify-content-between">
+                <button className="btn btn-danger" onClick={deleteBtn}>
+                  Yes
+                </button>
+                <button className="btn btn-primary" onClick={handleCloseModal}>
+                  No (Cancel){" "}
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     );
   };
-
+  Modal.setAppElement("body")
   return (
     <ReactModal
       closeTimeoutMS={500}

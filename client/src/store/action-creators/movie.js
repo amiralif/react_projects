@@ -86,13 +86,13 @@ export const updateMovie = (id, name, description,movieGenre,releaseDate, onSucc
   };
 };
 
-export const deleteMovie = (id, navigate) => {
+export const deleteMovie = (id, onSuccess) => {
   return async (dispatch, getState) => {
     const state = getState();
     await axios.delete(`http://127.0.0.1:9000/movies/${id}`, {
       headers: { authorization: `Bearer ${state.login.data.token}` },
     });
     dispatch({ type: DELETE_MOVIE, payload: id });
-    navigate();
+    onSuccess();
   };
 };
