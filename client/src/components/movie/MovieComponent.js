@@ -14,6 +14,8 @@ const MovieComponent = () => {
   }, [dispatch, movieId]);
 
   const movieContainer = () => {
+    const  releaseDate = movie.releaseDate.toString().split("T")[0].replace(/-/gi, "/")
+  
     if (movie) {
       return (
         <div
@@ -22,13 +24,24 @@ const MovieComponent = () => {
         >
           <div className={`${classes.p_2}`}></div>
           <div className={`${classes.movies_text} ${classes.w_100} `}>
-            <h6 className="font-medium"> {movie.name} </h6>
+            <h6 className={`${classes.movieName}`}> {movie.name} </h6>
             <span className={`${classes.m_b_15} d-block`}>
               Creator: {movie.creator.split("@")[0]}
             </span>
-            <span className={`${classes.m_b_15} `}>{movie.description}</span>
-            <span className={`${classes.m_b_15} float-end `}>
-              {movie.createDate}
+            <span className={`${classes.m_b_15}  `}>Movie Description: </span>
+            <br />
+            <p className={`${classes.m_b_15} ${classes.description} `}>
+              {movie.description}
+            </p>
+            <br></br>
+            <br></br>
+            <span className={`${classes.m_b_15} `}>Movie Released at: {releaseDate}</span>
+            <br></br> <br></br>
+            <span className={`${classes.m_b_15} `}>
+              Movie Genre: <strong>{movie.movieGenre}</strong>
+            </span>
+            <span className={`${classes.m_b_15} float-end mt-5`}>
+              Posted at: {movie.createDate}
             </span>
           </div>
         </div>

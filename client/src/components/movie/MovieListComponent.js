@@ -73,7 +73,7 @@ const MovieListComponent = () => {
           <h6 className="font-medium">  {movie.name} </h6>
           <span className={`${classes.m_b_15} d-block`}>Creator: {movie.creator.split("@")[0]}</span>
             <div className={`${classes.movies_footer}`}>
-                <span className="text-muted float-right"> {movie.createDate}</span>
+                <span className="text-muted float-right">Posted at:  {movie.createDate}</span>
                 {buttonHandler(movie)}
             </div>
         </div>

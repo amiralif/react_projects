@@ -67,7 +67,7 @@ export const createMovie = (
           creator: state.login.data.email,
           releaseDate: releaseDate,
           movieGenre: movieGenre,
-          createDate: month + " ," + date.getDay(),
+          createDate: month + " " + date.getDate() + " , " + date.getFullYear(),
         },
         { headers: { authorization: `Bearer ${state.login.data.token}` } }
       );
