@@ -3,7 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { checkAuthenticateStatus } from "../store";
 
 import Authenticate from "./auth/Authenticate";
@@ -14,23 +14,65 @@ import UpdateMovieComponent from "./movie/UpdateMovieComponent";
 import DeleteMovieComponent from "./movie/DeleteMovieComponent";
 import NotFound from "./NotFound";
 import Navbar from "./Navbar";
+import Search from "./Search";
+import Loading from "./Loading";
 
 function App() {
   const { data: loginData } = useSelector((store) => store.login);
   const dispatch = useDispatch();
+  const [isSearch, setIsSearch] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     dispatch(checkAuthenticateStatus());
   }, [dispatch]);
+
+  const search = (value) => {
+    setIsLoading(true);
+    if (!value || value === "") {
+      setIsSearch(false);
+      setSearchValue("");
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 300);
+    } else {
+      setIsSearch(true);
+      setSearchValue(value);
+
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 300);
+    }
+  };
 
   const contentToShow = () => {
     if (loginData) {
       return (
         <BrowserRouter>
           <Navbar />
+          <Search search={search} />
           <Routes>
             <Route path="/" element={<Authenticate />}></Route>
-            <Route path="/movies" element={<MovieListComponent />}></Route>
+            {isLoading ? (
+              <Route path="/movies" element={<Loading />}></Route>
+            ) : (
+              <Route
+                path="/movies"
+                element={
+                  <MovieListComponent
+                    search={searchValue}
+                    isSearch={isSearch}
+                  />
+                }
+              ></Route>
+            )}
+            <Route
+              path="/movies"
+              element={<MovieListComponent />}
+              search={searchValue}
+              isSearch={isSearch}
+            ></Route>
             <Route path="/movie/:movieId" element={<MovieComponent />}></Route>
             <Route
               path="/movie/create"
