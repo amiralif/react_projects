@@ -1,50 +1,5 @@
 {
   "movies": [
-    {
-      "name": "star wars",
-      "description": "a science fiction movie",
-      "creator": "techie@email.com",
-      "id": 2
-    },
-    {
-      "name": "Jumanji",
-      "description": "A very great movie",
-      "creator": "techie@email.com",
-      "id": 3
-    },
-    {
-      "name": "face off",
-      "description": "An action movie",
-      "creator": "techie@email.com",
-      "id": 4
-    },
-    {
-      "name": "Top Gun",
-      "description": "A new entry in the series",
-      "creator": "bruno@email.com",
-      "id": 7,
-      "movieGenre": "Documentary",
-      "releaseDate": "2022-08-30T20:22:19.215Z"
-    },
-    {
-      "name": "ada",
-      "description": "adsadsads",
-      "creator": "bruno@email.com",
-      "releaseDate": "2022-08-30T16:47:26.005Z",
-      "genre": "none",
-      "createDate": "Aug ,2",
-      "id": 14
-    },
-    {
-      "name": "tst2",
-      "description": "asdasd",
-      "creator": "bruno@email.com",
-      "releaseDate": [
-        "2022-08-11T19:11:00.000Z"
-      ],
-      "genre": "Drama",
-      "createDate": "Aug ,2",
-      "id": 15
-    }
+    
   ]
 }

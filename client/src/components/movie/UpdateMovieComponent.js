@@ -79,7 +79,7 @@ const UpdateMovieComponent = () => {
     <MovieFrom
       name={editMovie && editMovie.name}
       description={editMovie && editMovie.description}
-      genre={editMovie && editMovie.genre}
+      genre={editMovie && editMovie.movieGenre}
       releaseDate={editMovie && editMovie.releaseDate}
       onFormSubmit={formSubmit}
     />

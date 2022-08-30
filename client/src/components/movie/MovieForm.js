@@ -63,6 +63,7 @@ const MovieForm = (props) => {
                           type="radio"
                           value="Action"
                           name="genre"
+                          checked={movieGenre==="Action"}
                           onChange={(e) => {
                             setMovieGenre(e.target.value);
                           }}
@@ -76,6 +77,8 @@ const MovieForm = (props) => {
                           type="radio"
                           value="Drama"
                           name="genre"
+                          checked={movieGenre==="Drama"}
+
                           onChange={(e) => {
                             setMovieGenre(e.target.value);
                           }}
@@ -90,6 +93,8 @@ const MovieForm = (props) => {
                           type="radio"
                           value="Documentary"
                           name="genre"
+                          checked={movieGenre==="Documentary"}
+
                           onChange={(e) => {
                             setMovieGenre(e.target.value);
                           }}
@@ -103,6 +108,8 @@ const MovieForm = (props) => {
                           type="radio"
                           value="Science Fiction"
                           name="genre"
+                          checked={movieGenre==="Science Fiction"}
+
                           onChange={(e) => {
                             setMovieGenre(e.target.value);
                           }}
