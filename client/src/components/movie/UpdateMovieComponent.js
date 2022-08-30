@@ -33,6 +33,31 @@ const UpdateMovieComponent = () => {
     navigate("/movies");
   };
 
+  const onError = (e) => {
+    setLoading(false);
+    if (e.message === "Network Error") {
+      toast.error(e.message, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      toast.error(e.response.data.message, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
+
   const formSubmit = (name, descriptions, movieGenre, releaseDate) => {
     setLoading(true);
     dispatch(
@@ -42,7 +67,8 @@ const UpdateMovieComponent = () => {
         descriptions,
         movieGenre,
         releaseDate,
-        onSuccess
+        onSuccess,
+        onError
       )
     );
   };

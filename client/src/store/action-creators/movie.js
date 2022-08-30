@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 import {
   MOVIE_LIST,
@@ -34,7 +35,8 @@ export const createMovie = (
   description,
   movieGenre,
   releaseDate,
-  onSuccess
+  onSuccess,
+  onError
 ) => {
   const months = [
     "Jan",
@@ -56,43 +58,63 @@ export const createMovie = (
 
   return async (dispatch, getState) => {
     const state = getState();
-    const response = await axios.post(
-      "http://127.0.0.1:9000/movies",
-      {
-        name: name,
-        description: description,
-        creator: state.login.data.email,
-        releaseDate: releaseDate,
-        genre: movieGenre,
-        createDate: month + " ," + date.getDay(),
-      },
-      { headers: { authorization: `Bearer ${state.login.data.token}` } }
-    );
-    dispatch({ type: CREATE_MOVIE, payload: response.data });
-    onSuccess();
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:9000/movies",
+        {
+          name: name,
+          description: description,
+          creator: state.login.data.email,
+          releaseDate: releaseDate,
+          genre: movieGenre,
+          createDate: month + " ," + date.getDay(),
+        },
+        { headers: { authorization: `Bearer ${state.login.data.token}` } }
+      );
+      dispatch({ type: CREATE_MOVIE, payload: response.data });
+      onSuccess();
+    } catch (e) {
+      onError(e);
+    }
   };
 };
 
-export const updateMovie = (id, name, description,movieGenre,releaseDate, onSuccess) => {
+export const updateMovie = (
+  id,
+  name,
+  description,
+  movieGenre,
+  releaseDate,
+  onSuccess,
+  onError
+) => {
   return async (dispatch, getState) => {
     const state = getState();
-    const response = await axios.patch(
-      `http://127.0.0.1:9000/movies/${id}`,
-      { name, description,movieGenre,releaseDate, },
-      { headers: { authorization: `Bearer ${state.login.data.token}` } }
-    );
-    dispatch({ type: UPDATE_MOVIE, payload: response.data });
-    onSuccess();
+    try {
+      const response = await axios.patch(
+        `http://127.0.0.1:9000/movies/${id}`,
+        { name, description, movieGenre, releaseDate },
+        { headers: { authorization: `Bearer ${state.login.data.token}` } }
+      );
+      dispatch({ type: UPDATE_MOVIE, payload: response.data });
+      onSuccess();
+    } catch (e) {
+      onError(e);
+    }
   };
 };
 
-export const deleteMovie = (id, onSuccess) => {
+export const deleteMovie = (id, onSuccess, onError) => {
   return async (dispatch, getState) => {
     const state = getState();
-    await axios.delete(`http://127.0.0.1:9000/movies/${id}`, {
-      headers: { authorization: `Bearer ${state.login.data.token}` },
-    });
-    dispatch({ type: DELETE_MOVIE, payload: id });
-    onSuccess();
+    try {
+      await axios.delete(`http://127.0.0.1:9000/movies/${id}`, {
+        headers: { authorization: `Bearer ${state.login.data.token}` },
+      });
+      dispatch({ type: DELETE_MOVIE, payload: id });
+      onSuccess();
+    } catch (e) {
+      onError(e);
+    }
   };
 };

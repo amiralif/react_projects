@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteMovie, movieList } from "../../store";
 import { toast } from "react-toastify";
 import Loading from "../Loading";
-import Modal from 'react-modal'
+import Modal from "react-modal";
 
 const DeleteMovieComponent = () => {
   const dispatch = useDispatch();
@@ -36,10 +36,34 @@ const DeleteMovieComponent = () => {
     });
     navigate("/movies");
   };
+  const onError = (e) => {
+    setLoading(false);
+    if (e.message === "Network Error") {
+      toast.error(e.message, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      toast.error(e.response.data.message, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
 
   const deleteBtn = () => {
     setLoading(true);
-    dispatch(deleteMovie(movieId, onSuccess));
+    dispatch(deleteMovie(movieId, onSuccess, onError));
   };
 
   const handleCloseModal = () => {
@@ -94,7 +118,7 @@ const DeleteMovieComponent = () => {
       </div>
     );
   };
-  Modal.setAppElement("body")
+  Modal.setAppElement("body");
   return (
     <ReactModal
       closeTimeoutMS={500}

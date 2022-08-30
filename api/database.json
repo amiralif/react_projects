@@ -22,16 +22,9 @@
       "name": "Top Gun",
       "description": "A new entry in the series",
       "creator": "bruno@email.com",
-      "id": 7
-    },
-    {
-      "name": "",
-      "description": "",
-      "creator": "bruno@email.com",
-      "releaseDate": "2022-08-30T16:42:56.471Z",
-      "genre": "Documentary",
-      "createDate": "Aug ,2",
-      "id": 13
+      "id": 7,
+      "movieGenre": "Documentary",
+      "releaseDate": "2022-08-30T20:22:19.215Z"
     },
     {
       "name": "ada",

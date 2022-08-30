@@ -26,10 +26,37 @@ const CreateMovieComponent = () => {
     });
     navigate("/movies");
   };
+
+  const onError = (e) => {
+    setLoading(false);
+    if (e.message === "Network Error") {
+      toast.error(e.message, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      toast.error(e.response.data.message, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
+
+
   const onSubmit = (name, description, movieGenre, releaseDate) => {
     setLoading(true);
     dispatch(
-      createMovie(name, description, movieGenre, releaseDate, onSuccess)
+      createMovie(name, description, movieGenre, releaseDate, onSuccess ,onError)
     );
   };
 
